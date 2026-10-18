@@ -1,5 +1,5 @@
 /* HA Card Generator: build a Home Assistant card with a form, see a live preview, copy the YAML. */
-const BMC_USER = '';   // Buy Me a Coffee username; the coffee button stays hidden while empty
+const BMC_USER = 'rein033';   // Buy Me a Coffee username; the coffee button stays hidden while empty
 
 const $ = (s, r = document) => r.querySelector(s);
 const byType = Object.fromEntries(CARDS.map((c) => [c.type, c]));

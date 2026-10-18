@@ -1,5 +1,6 @@
 # HA Card Generator
 
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-rein033-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/rein033)
 Build Home Assistant dashboard cards with a form, see a live preview in light and dark, and copy the YAML.
 
 **Use it:** [uselesssite.nl/ha-card-generator](https://uselesssite.nl/ha-card-generator/)
@@ -17,6 +18,10 @@ Everything runs in your browser. Nothing is sent anywhere; a share link holds th
 
 Plain HTML, CSS and JavaScript, no build step. `cards.js` holds the card definitions (fields and preview per card),
 `app.js` the editor. Open `index.html` through any static web server.
+
+## Support
+
+Everything here is free. If it saves you time or makes your dashboard nicer, you can [buy me a coffee](https://buymeacoffee.com/rein033) ☕
 
 ## License
 
