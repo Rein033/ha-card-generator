@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HA Card Generator</title>
+<meta name="description" content="Build Home Assistant dashboard cards with a form, see a live preview and copy the YAML. Tile, Entities, Gauge, Mushroom, button-card, stacks and grids.">
+<meta property="og:title" content="HA Card Generator">
+<meta property="og:description" content="Build Home Assistant cards visually and copy the YAML.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='26' rx='7' fill='%2303a9f4'/%3E%3Crect x='8' y='9' width='16' height='5' rx='2' fill='%23fff'/%3E%3Crect x='8' y='17' width='7' height='7' rx='2' fill='%23fff'/%3E%3Crect x='17' y='17' width='7' height='7' rx='2' fill='%23fff' opacity='.6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="7" fill="var(--accent)"/><rect x="8" y="9" width="16" height="5" rx="2" fill="#fff"/><rect x="8" y="17" width="7" height="7" rx="2" fill="#fff"/><rect x="17" y="17" width="7" height="7" rx="2" fill="#fff" opacity=".6"/></svg>
+    <div><b>HA Card Generator</b><small>Build a Home Assistant card, copy the YAML</small></div></div>
+  <nav>
+    <a href="https://github.com/Rein033/ha-card-generator" class="ghost"><i class="mdi mdi-github"></i> GitHub</a>
+    <a id="bmc" class="coffee" hidden target="_blank" rel="noopener"><i class="mdi mdi-coffee"></i> Buy me a coffee</a>
+  </nav>
+</header>
+
+<main>
+  <section class="left">
+    <div class="panel">
+      <h2>Start from an example</h2>
+      <div id="templates" class="templates"></div>
+    </div>
+    <div class="panel">
+      <div id="crumbs" class="crumbs"></div>
+      <div class="typerow">
+        <label for="cardtype">Card type</label>
+        <select id="cardtype"></select>
+        <button type="button" id="reset" class="small" title="Start with an empty tile card"><i class="mdi mdi-restart"></i> New</button>
+      </div>
+      <p id="carddesc" class="desc"></p>
+      <form id="form" class="form" onsubmit="return false"></form>
+    </div>
+  </section>
+
+  <section class="right">
+    <div class="panel sticky">
+      <div class="phead"><h2>Preview</h2><button type="button" id="theme" class="small"><i class="mdi mdi-theme-light-dark"></i> Light / dark</button></div>
+      <div id="preview" class="preview"></div>
+      <p class="hint">The preview uses example data. In Home Assistant your own entities and theme are used.</p>
+      <div class="phead"><h2>YAML</h2>
+        <div class="btns"><button type="button" id="import" class="small"><i class="mdi mdi-import"></i> Paste YAML</button>
+          <button type="button" id="share" class="small"><i class="mdi mdi-link-variant"></i> Share</button>
+          <button type="button" id="copy" class="main"><i class="mdi mdi-content-copy"></i> Copy</button></div></div>
+      <div id="importbox" class="importbox" hidden>
+        <textarea id="importtext" rows="8" placeholder="type: tile&#10;entity: light.living_room"></textarea>
+        <div class="btns"><span id="importerr" class="err"></span><button type="button" id="doimport" class="main">Load</button></div>
+      </div>
+      <pre id="yaml" class="yaml"></pre>
+      <details class="how"><summary>How do I use this YAML?</summary>
+        <ol><li>Open your dashboard in Home Assistant and tap <b>Edit</b>.</li>
+          <li>Add a card, pick <b>Manual</b> (at the bottom of the card list).</li>
+          <li>Paste the YAML and save. Cards starting with <code>custom:</code> need that card from HACS first.</li></ol>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Made by <a href="https://github.com/Rein033">Rein033</a> · Also by me: <a href="https://uselesssite.nl/universal-3d-cards/">Universal 3D Cards</a> ·
+  Not affiliated with Home Assistant or the Open Home Foundation
+</footer>
+
+<datalist id="ents"></datalist>
+<datalist id="icons"></datalist>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+<script src="cards.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
