@@ -42,6 +42,7 @@ function updatePreview() {
   const pv = $('#preview');
   pv.className = 'preview ' + (state.dark ? 'dark' : 'light');
   pv.innerHTML = `<div class="pv-section">${wrapGrid(state.root, render(state.root))}</div>`;
+  if (typeof hydratePrinters === 'function') hydratePrinters(pv);
   $('#yaml').textContent = toYaml(state.root);
   saveHash();
 }
@@ -187,7 +188,7 @@ function flash(sel, text) { const b = $(sel); const old = b.innerHTML; b.textCon
 
 /* ── start ──────────────────────────────────────────── */
 function start() {
-  $('#ents').innerHTML = DATALIST.map((e) => `<option value="${e}">`).join('');
+  $('#ents').innerHTML = [...DATALIST, ...(typeof P3D_ENTITIES !== 'undefined' ? P3D_ENTITIES : [])].map((e) => `<option value="${e}">`).join('');
   $('#templates').innerHTML = TEMPLATES.map((t, i) => `<button type="button" data-tpl="${i}">${icon(t.icon)}${h(t.name)}</button>`).join('');
   try { if (location.hash.startsWith('#c=')) state.root = dec(location.hash.slice(3)); } catch (e) { /* broken link: start fresh */ }
   if (!state.root || !state.root.type) state.root = JSON.parse(JSON.stringify(TEMPLATES[0].config));

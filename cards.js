@@ -212,15 +212,13 @@ const CARDS = [
   { type: 'custom:printer-3d-card', label: 'Universal 3D Printer', group: 'Universal 3D Cards', icon: 'mdi:printer-3d', desc: 'Any 3D printer: Bambu, Klipper, Creality, Anycubic, OctoPrint.',
     fields: [{ name: 'entity', type: 'entity', required: true }, { name: 'name', type: 'text' }, { name: 'view', type: 'select', options: ['printer', 'preview', 'camera'] },
       { name: 'drawing', type: 'select', options: ['auto', 'bambu', 'bedslinger', 'voron', 'k1', 'kobra', 'enclosed'] }, { name: 'show_slicer', type: 'bool', default: true },
-      { name: 'show_temperatures', type: 'bool', default: true }, { name: 'show_controls', type: 'bool', default: true }, GRID_FIELD],
+      { name: 'show_temperatures', type: 'bool', default: true }, { name: 'show_controls', type: 'bool', default: true }, { name: 'show_view_switch', type: 'bool', default: true }, GRID_FIELD],
     defaults: { entity: 'sensor.x1c_print_status' },
-    preview: (c) => `<div class="hc-card pad p3d"><div class="p3d-top">${icon('mdi:printer-3d-nozzle')}<div><b>${h(c.name || 'X1 Carbon')}</b><small>Articulated Dragon</small></div><span class="pchip">Printing</span></div>
-      <img src="https://uselesssite.nl/universal-3d-cards/images/printers-dark.png" alt="" class="p3d-img" loading="lazy">
-      <div class="p3d-bar"><i style="width:46%"></i></div><div class="p3d-meta"><span><b>46%</b></span><span>1h 54m left</span>${c.show_temperatures === false ? '' : '<span>Nozzle 220°</span><span>Bed 55°</span>'}</div></div>` },
+    preview: (c) => `<printer-3d-card data-cfg="${h(JSON.stringify(c))}"></printer-3d-card>` },
   { type: 'custom:printer-3d-group-card', label: 'Universal 3D Printer group', group: 'Universal 3D Cards', icon: 'mdi:format-list-checks', desc: 'All 3D printers in one list.',
     fields: [{ name: 'title', type: 'text' }, { name: 'entities', type: 'entities' }, { name: 'show_idle', type: 'bool', default: true }, GRID_FIELD],
     defaults: { title: 'Printers' },
-    preview: (c) => `<div class="hc-card pad"><div class="card-title">${h(c.title || 'Printers')}</div>${[['X1 Carbon', 46, 'Printing'], ['Voron 2.4', 33, 'Printing'], ['Ender 3', 0, 'Idle']].filter((r) => c.show_idle !== false || r[1]).map(([n, p, s]) => `<div class="pg-row"><span class="pg-ic">${icon('mdi:printer-3d')}</span><div class="pg-main"><b>${n}</b><small>${s}</small>${p ? `<div class="p3d-bar"><i style="width:${p}%"></i></div>` : ''}</div></div>`).join('')}</div>` },
+    preview: (c) => `<printer-3d-group-card data-cfg="${h(JSON.stringify(c))}"></printer-3d-group-card>` },
 ];
 
 function mushroom(c, e, iconColor, extra = '', secondaryText) {

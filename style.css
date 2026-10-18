@@ -93,8 +93,10 @@ footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 10
 
 /* ── HA-like preview ─────────────────────────────── */
 .preview { border-radius: 14px; padding: 18px; background-size: cover; }
-.preview.light { --hc-bg: #fafafa; --hc-card: #fff; --hc-text: #212121; --hc-sub: #727272; --hc-icon: #44739e; --hc-off: #8a8f98; --hc-primary: #03a9f4; --hc-accent: #ff9800; --hc-field: rgba(0,0,0,.06); background-color: var(--hc-bg); }
-.preview.dark { --hc-bg: #111111; --hc-card: #1c1c1c; --hc-text: #e1e1e1; --hc-sub: #9b9b9b; --hc-icon: #9b9b9b; --hc-off: #6f7277; --hc-primary: #03a9f4; --hc-accent: #ff9800; --hc-field: rgba(255,255,255,.08); background-color: var(--hc-bg); }
+.preview.light { --card-background-color: #fff; --primary-text-color: #212121; --secondary-text-color: #727272; --secondary-background-color: #f3f3f3; --divider-color: rgba(0,0,0,.12); --primary-color: #03a9f4; --accent-color: #ff9800;
+  --hc-bg: #fafafa; --hc-card: #fff; --hc-text: #212121; --hc-sub: #727272; --hc-icon: #44739e; --hc-off: #8a8f98; --hc-primary: #03a9f4; --hc-accent: #ff9800; --hc-field: rgba(0,0,0,.06); background-color: var(--hc-bg); }
+.preview.dark { --card-background-color: #1c1c1c; --primary-text-color: #e1e1e1; --secondary-text-color: #9b9b9b; --secondary-background-color: #282828; --divider-color: rgba(225,225,225,.12); --primary-color: #03a9f4; --accent-color: #ff9800;
+  --hc-bg: #111111; --hc-card: #1c1c1c; --hc-text: #e1e1e1; --hc-sub: #9b9b9b; --hc-icon: #9b9b9b; --hc-off: #6f7277; --hc-primary: #03a9f4; --hc-accent: #ff9800; --hc-field: rgba(255,255,255,.08); background-color: var(--hc-bg); }
 .preview { color: var(--hc-text); font-family: Roboto, system-ui, sans-serif; }
 .pv-section { display: grid; grid-template-columns: repeat(12, 1fr); gap: 8px; }
 .pv-cell { min-width: 0; }
@@ -185,3 +187,5 @@ footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 10
 .pg-main { flex: 1; display: flex; flex-direction: column; }
 .unknown { display: flex; flex-direction: column; gap: 4px; align-items: center; text-align: center; font-size: 26px; }
 .unknown b { font-size: 14px; }
+
+printer-3d-card, printer-3d-group-card { display: block; }
