@@ -16,7 +16,8 @@ Everything runs in your browser. Nothing is sent anywhere; a share link holds th
 
 ## Development
 
-Plain HTML, CSS and JavaScript, no build step. `cards.js` holds the card definitions (fields and preview per card),
+Plain HTML, CSS and JavaScript, no build step. Bump the `?v=` number on the script and style links in `index.html`
+after a change, so browsers and caches load the new files. `cards.js` holds the card definitions (fields and preview per card),
 `app.js` the editor. Open `index.html` through any static web server.
 
 ## Support
