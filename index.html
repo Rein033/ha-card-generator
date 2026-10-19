@@ -3,22 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HA Card Generator</title>
-<meta name="description" content="Build Home Assistant dashboard cards with a form, see a live preview and copy the YAML. Tile, Entities, Gauge, Mushroom, button-card, stacks and grids.">
-<meta property="og:title" content="HA Card Generator">
-<meta property="og:description" content="Build Home Assistant cards visually and copy the YAML.">
+<title>HA Card Generator – build Home Assistant dashboard cards and copy the YAML</title>
+<meta name="description" content="Build Home Assistant dashboard cards with a form, see a live preview in light and dark, and copy the YAML. Tile, Entities, Gauge, Mushroom, button-card, stacks and grids.">
+<link rel="canonical" href="https://uselesssite.nl/ha-card-generator/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="uselesssite.nl">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://uselesssite.nl/ha-card-generator/">
+<meta property="og:title" content="HA Card Generator – build Home Assistant dashboard cards and copy the YAML">
+<meta property="og:description" content="Build Home Assistant dashboard cards with a form, see a live preview in light and dark, and copy the YAML. Tile, Entities, Gauge, Mushroom, button-card, stacks and grids.">
+<meta property="og:image" content="https://uselesssite.nl/ha-card-generator/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HA Card Generator – build Home Assistant dashboard cards and copy the YAML">
+<meta name="twitter:description" content="Build Home Assistant dashboard cards with a form, see a live preview in light and dark, and copy the YAML. Tile, Entities, Gauge, Mushroom, button-card, stacks and grids.">
+<meta name="twitter:image" content="https://uselesssite.nl/ha-card-generator/og.png">
+<meta name="theme-color" content="#039be5">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "HA Card Generator", "url": "https://uselesssite.nl/ha-card-generator/", "description": "Build Home Assistant dashboard cards with a form, see a live preview in light and dark, and copy the YAML. Tile, Entities, Gauge, Mushroom, button-card, stacks and grids.", "applicationCategory": "DeveloperApplication", "operatingSystem": "Any (web browser)", "browserRequirements": "Requires JavaScript", "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "featureList": ["Built-in cards: Tile with features, Entities, Button, Glance, Gauge, Thermostat, Light, Weather, Markdown, Heading", "Vertical stack, horizontal stack and grid, as deep as you like", "Community cards: Mushroom, button-card and Universal 3D Cards", "Shows which HACS cards you need, with a one-click Open in HACS link", "Examples to start from, paste existing YAML to edit it, share a design with a link"], "image": "https://uselesssite.nl/ha-card-generator/og.png", "author": {"@type": "Person", "name": "Rein033", "url": "https://github.com/Rein033"}, "license": "https://opensource.org/licenses/MIT", "codeRepository": "https://github.com/Rein033/ha-card-generator"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "uselesssite.nl", "item": "https://uselesssite.nl/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://uselesssite.nl/tools/"}, {"@type": "ListItem", "position": 3, "name": "HA Card Generator", "item": "https://uselesssite.nl/ha-card-generator/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I add the card to my dashboard?", "acceptedAnswer": {"@type": "Answer", "text": "Open your dashboard, click Edit, add a card, choose Manual at the bottom of the list, paste the YAML and save."}}, {"@type": "Question", "name": "Do I need HACS?", "acceptedAnswer": {"@type": "Answer", "text": "Only for community cards (types starting with custom:). The box above the YAML shows exactly which ones you need and links straight to them in HACS."}}, {"@type": "Question", "name": "Can I edit a card I already have?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Click Paste YAML, paste your card and it loads into the form, including stacks and grids."}}, {"@type": "Question", "name": "Does it work with my theme?", "acceptedAnswer": {"@type": "Answer", "text": "The preview uses the default Home Assistant look in light and dark. In your dashboard the card follows your own theme; you can design one with the HA Theme Generator."}}]}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='26' rx='7' fill='%2303a9f4'/%3E%3Crect x='8' y='9' width='16' height='5' rx='2' fill='%23fff'/%3E%3Crect x='8' y='17' width='7' height='7' rx='2' fill='%23fff'/%3E%3Crect x='17' y='17' width='7' height='7' rx='2' fill='%23fff' opacity='.6'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 <header class="top">
   <div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="7" fill="var(--accent)"/><rect x="8" y="9" width="16" height="5" rx="2" fill="#fff"/><rect x="8" y="17" width="7" height="7" rx="2" fill="#fff"/><rect x="17" y="17" width="7" height="7" rx="2" fill="#fff" opacity=".6"/></svg>
-    <div><b>HA Card Generator</b><small>Build a Home Assistant card, copy the YAML</small></div></div>
+    <div><h1>HA Card Generator</h1><small>Build a Home Assistant card, copy the YAML</small></div></div>
   <nav>
-    <a href="https://uselesssite.nl/tools/" class="ghost"><i class="mdi mdi-view-grid-outline"></i> All tools</a>
-    <a href="https://github.com/Rein033/ha-card-generator" class="ghost"><i class="mdi mdi-github"></i> GitHub</a>
-    <a id="bmc" class="coffee" hidden target="_blank" rel="noopener"><i class="mdi mdi-coffee"></i> Buy me a coffee</a>
+    <a href="https://uselesssite.nl/tools/" class="ghost"><i class="mdi mdi-view-grid-outline"></i> <span>All tools</span></a>
+    <a href="https://github.com/Rein033/ha-card-generator" class="ghost"><i class="mdi mdi-github"></i> <span>GitHub</span></a>
+    <a id="bmc" class="coffee" hidden target="_blank" rel="noopener"><i class="mdi mdi-coffee"></i> <span>Buy me a coffee</span></a>
   </nav>
 </header>
 
@@ -53,15 +70,40 @@
         <textarea id="importtext" rows="8" placeholder="type: tile&#10;entity: light.living_room"></textarea>
         <div class="btns"><span id="importerr" class="err"></span><button type="button" id="doimport" class="main">Load</button></div>
       </div>
+      <div id="hacs" class="hacs"></div>
       <pre id="yaml" class="yaml"></pre>
       <details class="how"><summary>How do I use this YAML?</summary>
         <ol><li>Open your dashboard in Home Assistant and tap <b>Edit</b>.</li>
           <li>Add a card, pick <b>Manual</b> (at the bottom of the card list).</li>
-          <li>Paste the YAML and save. Cards starting with <code>custom:</code> need that card from HACS first.</li></ol>
+          <li>Paste the YAML and save. Cards starting with <code>custom:</code> need that card from HACS first; the box above the YAML tells you which ones and links straight to them.</li></ol>
       </details>
     </div>
   </section>
 </main>
+
+<section class="over wrap-over">
+  <div class="panel">
+    <h2>What can HA Card Generator do?</h2>
+    <p>Build Home Assistant dashboard cards with a form, see a live preview in light and dark, and copy the YAML. Tile, Entities, Gauge, Mushroom, button-card, stacks and grids.</p>
+    <ul class="kenm"><li>Built-in cards: Tile with features, Entities, Button, Glance, Gauge, Thermostat, Light, Weather, Markdown, Heading</li><li>Vertical stack, horizontal stack and grid, as deep as you like</li><li>Community cards: Mushroom, button-card and Universal 3D Cards</li><li>Shows which HACS cards you need, with a one-click Open in HACS link</li><li>Examples to start from, paste existing YAML to edit it, share a design with a link</li></ul>
+  </div>
+  <div class="panel"><h2>Frequently asked questions</h2><div class="faq"><details><summary>How do I add the card to my dashboard?</summary><p>Open your dashboard, click Edit, add a card, choose Manual at the bottom of the list, paste the YAML and save.</p></details><details><summary>Do I need HACS?</summary><p>Only for community cards (types starting with custom:). The box above the YAML shows exactly which ones you need and links straight to them in HACS.</p></details><details><summary>Can I edit a card I already have?</summary><p>Yes. Click Paste YAML, paste your card and it loads into the form, including stacks and grids.</p></details><details><summary>Does it work with my theme?</summary><p>The preview uses the default Home Assistant look in light and dark. In your dashboard the card follows your own theme; you can design one with the HA Theme Generator.</p></details></div></div>
+  <div class="panel"><h2>More free tools</h2><div class="rels"><a class="rel" href="https://uselesssite.nl/esphome-config-builder/"><span class="tile-ic"><i class="mdi mdi-chip"></i></span><span><b>ESPHome Config Builder</b><small>Pick a board and sensors, get the YAML</small></span></a><a class="rel" href="https://uselesssite.nl/ha-automation-builder/"><span class="tile-ic"><i class="mdi mdi-robot-outline"></i></span><span><b>HA Automation Builder</b><small>Build Home Assistant automations, copy the YAML</small></span></a><a class="rel" href="https://uselesssite.nl/ha-theme-generator/"><span class="tile-ic"><i class="mdi mdi-palette-swatch-variant"></i></span><span><b>HA Theme Generator</b><small>Design a Home Assistant theme, copy the YAML</small></span></a><a class="rel" href="https://uselesssite.nl/mdi-icon-search/"><span class="tile-ic"><i class="mdi mdi-magnify-scan"></i></span><span><b>MDI Icon Search</b><small>Find an icon, copy mdi:name</small></span></a><a class="rel" href="https://uselesssite.nl/universal-3d-cards/"><span class="tile-ic"><i class="mdi mdi-printer-3d-nozzle"></i></span><span><b>Universal 3D Cards</b><small>One 3D printer card for Home Assistant</small></span></a><a class="rel" href="https://uselesssite.nl/cv-generator/"><span class="tile-ic"><i class="mdi mdi-file-account-outline"></i></span><span><b>CV Generator</b><small>Modern cv maken en als PDF opslaan</small></span></a></div>
+    <p class="hint"><a href="https://uselesssite.nl/tools/">See all tools →</a></p></div>
+</section>
+
+
+<section class="over wrap-over">
+  <div class="panel">
+    <h2>What can HA Card Generator do?</h2>
+    <p>Build Home Assistant dashboard cards with a form, see a live preview in light and dark, and copy the YAML. Tile, Entities, Gauge, Mushroom, button-card, stacks and grids.</p>
+    <ul class="kenm"><li>Built-in cards: Tile with features, Entities, Button, Glance, Gauge, Thermostat, Light, Weather, Markdown, Heading</li><li>Vertical stack, horizontal stack and grid, as deep as you like</li><li>Community cards: Mushroom, button-card and Universal 3D Cards</li><li>Shows which HACS cards you need, with a one-click Open in HACS link</li><li>Examples to start from, paste existing YAML to edit it, share a design with a link</li></ul>
+  </div>
+  <div class="panel"><h2>Frequently asked questions</h2><div class="faq"><details><summary>How do I add the card to my dashboard?</summary><p>Open your dashboard, click Edit, add a card, choose Manual at the bottom of the list, paste the YAML and save.</p></details><details><summary>Do I need HACS?</summary><p>Only for community cards (types starting with custom:). The box above the YAML shows exactly which ones you need and links straight to them in HACS.</p></details><details><summary>Can I edit a card I already have?</summary><p>Yes. Click Paste YAML, paste your card and it loads into the form, including stacks and grids.</p></details><details><summary>Does it work with my theme?</summary><p>The preview uses the default Home Assistant look in light and dark. In your dashboard the card follows your own theme; you can design one with the HA Theme Generator.</p></details></div></div>
+  <div class="panel"><h2>More free tools</h2><div class="rels"><a class="rel" href="https://uselesssite.nl/esphome-config-builder/"><span class="tile-ic"><i class="mdi mdi-chip"></i></span><span><b>ESPHome Config Builder</b><small>Pick a board and sensors, get the YAML</small></span></a><a class="rel" href="https://uselesssite.nl/ha-automation-builder/"><span class="tile-ic"><i class="mdi mdi-robot-outline"></i></span><span><b>HA Automation Builder</b><small>Build Home Assistant automations, copy the YAML</small></span></a><a class="rel" href="https://uselesssite.nl/ha-theme-generator/"><span class="tile-ic"><i class="mdi mdi-palette-swatch-variant"></i></span><span><b>HA Theme Generator</b><small>Design a Home Assistant theme, copy the YAML</small></span></a><a class="rel" href="https://uselesssite.nl/mdi-icon-search/"><span class="tile-ic"><i class="mdi mdi-magnify-scan"></i></span><span><b>MDI Icon Search</b><small>Find an icon, copy mdi:name</small></span></a><a class="rel" href="https://uselesssite.nl/universal-3d-cards/"><span class="tile-ic"><i class="mdi mdi-printer-3d-nozzle"></i></span><span><b>Universal 3D Cards</b><small>One 3D printer card for Home Assistant</small></span></a><a class="rel" href="https://uselesssite.nl/cv-generator/"><span class="tile-ic"><i class="mdi mdi-file-account-outline"></i></span><span><b>CV Generator</b><small>Modern cv maken en als PDF opslaan</small></span></a></div>
+    <p class="hint"><a href="https://uselesssite.nl/tools/">See all tools →</a></p></div>
+</section>
+
 
 <footer>
   Made by <a href="https://github.com/Rein033">Rein033</a> · Also by me: <a href="https://uselesssite.nl/universal-3d-cards/">Universal 3D Cards</a> ·
@@ -71,8 +113,8 @@
 <datalist id="ents"></datalist>
 <datalist id="icons"></datalist>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-<script src="cards.js?v=2"></script>
-<script src="printers-demo.js?v=2"></script>
-<script src="app.js?v=2"></script>
+<script src="cards.js?v=5"></script>
+<script src="printers-demo.js?v=5"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>

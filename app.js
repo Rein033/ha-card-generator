@@ -38,12 +38,56 @@ function wrapGrid(cfg, html) {
   const col = cfg.grid_options && cfg.grid_options.columns;
   return `<div class="pv-cell" style="grid-column: span ${col === 'full' || !col ? 12 : Math.max(3, +col)}">${html}</div>`;
 }
+/* ── HACS: which community cards does this config need? ── */
+const HACS = [
+  [/^custom:mushroom-/, 'Mushroom', 'piitaya', 'lovelace-mushroom'],
+  [/^custom:button-card$/, 'button-card', 'custom-cards', 'button-card'],
+  [/^custom:printer-3d-/, 'Universal 3D Cards', 'Rein033', 'universal-3d-cards'],
+  [/^custom:mini-graph-card$/, 'mini-graph-card', 'kalkih', 'mini-graph-card'],
+  [/^custom:mini-media-player$/, 'mini-media-player', 'kalkih', 'mini-media-player'],
+  [/^custom:apexcharts-card$/, 'ApexCharts Card', 'RomRider', 'apexcharts-card'],
+  [/^custom:bubble-card$/, 'Bubble Card', 'Clooos', 'Bubble-Card'],
+  [/^custom:auto-entities$/, 'auto-entities', 'thomasloven', 'lovelace-auto-entities'],
+  [/^custom:(layout-card|(grid|horizontal|vertical)-layout)$/, 'layout-card', 'thomasloven', 'lovelace-layout-card'],
+  [/^custom:stack-in-card$/, 'stack-in-card', 'custom-cards', 'stack-in-card'],
+  [/^custom:vertical-stack-in-card$/, 'vertical-stack-in-card', 'ofekashery', 'vertical-stack-in-card'],
+  [/^custom:slider-entity-row$/, 'slider-entity-row', 'thomasloven', 'lovelace-slider-entity-row'],
+  [/^custom:multiple-entity-row$/, 'multiple-entity-row', 'benct', 'lovelace-multiple-entity-row'],
+  [/^custom:weather-card$/, 'Weather Card', 'bramkragten', 'weather-card'],
+  [/^custom:clock-weather-card$/, 'Clock Weather Card', 'pkissling', 'clock-weather-card'],
+  [/^custom:decluttering-card$/, 'decluttering-card', 'custom-cards', 'decluttering-card'],
+  [/^custom:swipe-card$/, 'Swipe Card', 'bramkragten', 'swipe-card'],
+  [/^custom:mod-card$|^card_mod$/, 'card-mod', 'thomasloven', 'lovelace-card-mod'],
+];
+function hacsNodig(cfg) {
+  const types = new Set();
+  (function loop(x) {
+    if (Array.isArray(x)) return x.forEach(loop);
+    if (!x || typeof x !== 'object') return;
+    if (typeof x.type === 'string' && x.type.startsWith('custom:')) types.add(x.type);
+    if (x.card_mod) types.add('card_mod');
+    Object.values(x).forEach(loop);
+  })(cfg);
+  const gevonden = new Map(), onbekend = [];
+  types.forEach((t) => { const m = HACS.find(([re]) => re.test(t)); if (m) gevonden.set(m[1], m); else onbekend.push(t); });
+  return { gevonden: [...gevonden.values()], onbekend };
+}
+function updateHacs() {
+  const { gevonden, onbekend } = hacsNodig(state.root), el = $('#hacs');
+  if (!gevonden.length && !onbekend.length) { el.innerHTML = `<div class="hacs-ok">${icon('mdi:check-circle')} Built-in card: works right away, nothing to install.</div>`; return; }
+  el.innerHTML = `<div class="hacs-title">${icon('mdi:package-variant-closed')} Needs from HACS <small>install these first (HACS → search → Download, then reload the page)</small></div>`
+    + gevonden.map(([, naam, owner, repo]) => `<div class="hacs-row"><b>${h(naam)}</b><a href="https://github.com/${owner}/${repo}" target="_blank" rel="noopener" class="hacs-gh">${icon('mdi:github')} ${h(owner)}/${h(repo)}</a>
+      <a class="hacs-btn" target="_blank" rel="noopener" href="https://my.home-assistant.io/redirect/hacs_repository/?owner=${encodeURIComponent(owner)}&repository=${encodeURIComponent(repo)}&category=plugin">${icon('mdi:open-in-new')} Open in HACS</a></div>`).join('')
+    + onbekend.map((t) => `<div class="hacs-row"><b>${h(t)}</b><span class="hacs-gh">Unknown custom card: search HACS for its name</span></div>`).join('');
+}
+
 function updatePreview() {
   const pv = $('#preview');
   pv.className = 'preview ' + (state.dark ? 'dark' : 'light');
   pv.innerHTML = `<div class="pv-section">${wrapGrid(state.root, render(state.root))}</div>`;
   if (typeof hydratePrinters === 'function') hydratePrinters(pv);
   $('#yaml').textContent = toYaml(state.root);
+  updateHacs();
   saveHash();
 }
 
